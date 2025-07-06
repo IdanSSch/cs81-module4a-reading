@@ -9,6 +9,7 @@ const readingLog = [
 
 // Adds a new reading entry to the log
 function addReadBook(day, book, minutes) {
+  // Does what it sounds like. Adds to the end of the list, though that's irrelevant for this use.
   const newEntry = { day, book, minutes };
   readingLog.push(newEntry);
 }
@@ -16,6 +17,7 @@ function addReadBook(day, book, minutes) {
 // Returns total minutes spent reading all week
 function totalReadingMinutes(log) {
   let total = 0;
+  // A stream operator could be used here, but this is simpler.
   for (let entry of log) {
     total += entry.minutes;
   }
@@ -25,6 +27,7 @@ function totalReadingMinutes(log) {
 // Returns the book read most frequently
 function mostReadBook(log) {
   const bookCounts = {};
+  // First, take the duplicate entries and count them into one object.
   for (let entry of log) {
     if (!bookCounts[entry.book]) {
       bookCounts[entry.book] = 1;
@@ -35,7 +38,8 @@ function mostReadBook(log) {
 
   let maxBook = null;
   let maxCount = 0;
-  for (let book in bookCounts) {
+  // Now, actually get the max value from this concatenated object. There is a better way to do this, but... it's not nice.
+  for (let book in bookCounts) { // The `of` vs `in` distinction is very silly, but it does indeed matter here.
     if (bookCounts[book] > maxCount) {
       maxBook = book;
       maxCount = bookCounts[book];
@@ -46,6 +50,7 @@ function mostReadBook(log) {
 
 // Prints a summary of minutes read per day
 function printDailySummary(log) {
+  // ...yep.
   for (let entry of log) {
     console.log(`${entry.day}: ${entry.minutes} mins reading "${entry.book}"`);
   }
