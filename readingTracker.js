@@ -7,14 +7,23 @@ const readingLog = [
   { day: "Friday", book: "1984", minutes: 15 }
 ];
 
-// Adds a new reading entry to the log
+/**
+ * Adds a new book entry to the reading log.
+ * @param day - The day of the week the book was read.
+ * @param book - The title of the book read.
+ * @param minutes - The number of minutes spent reading the book.
+ */
 function addReadBook(day, book, minutes) {
   // Does what it sounds like. Adds to the end of the list, though that's irrelevant for this use.
   const newEntry = { day, book, minutes };
   readingLog.push(newEntry);
 }
 
-// Returns total minutes spent reading all week
+/**
+ * Calculates the total number of minutes read from the log.
+ * @param log - The reading log array.
+ * @returns {total} - The total number of minutes read.
+ */
 function totalReadingMinutes(log) {
   let total = 0;
   // A stream operator could be used here, but this is simpler.
@@ -24,7 +33,11 @@ function totalReadingMinutes(log) {
   return total;
 }
 
-// Returns the book read most frequently
+/**
+ * Finds the most read book from the log.
+ * @param log - The reading log array.
+ * @returns {maxBook} - The title of the most read book.
+ */
 function mostReadBook(log) {
   const bookCounts = {};
   // First, take the duplicate entries and count them into one object.
@@ -48,7 +61,10 @@ function mostReadBook(log) {
   return maxBook;
 }
 
-// Prints a summary of minutes read per day
+/**
+ * Prints a summary of the reading log for each day.
+ * @param log - The reading log array.
+ */
 function printDailySummary(log) {
   // ...yep.
   for (let entry of log) {
