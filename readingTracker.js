@@ -66,7 +66,7 @@ function mostReadBook(log) {
  * @param log - The reading log array.
  */
 function printDailySummary(log) {
-  // ...yep.
+  // ...yep. This could be written better, by concatenating like before and printing one book per line.
   for (let entry of log) {
     console.log(`${entry.day}: ${entry.minutes} mins reading "${entry.book}"`);
   }
